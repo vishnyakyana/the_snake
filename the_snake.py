@@ -2,15 +2,8 @@ import random
 from typing import Optional, Tuple
 
 import pygame
-from pygame.locals import (
-    KEYDOWN,
-    K_DOWN,
-    K_ESCAPE,
-    K_LEFT,
-    K_RIGHT,
-    K_UP,
-    QUIT,
-)
+from pygame.locals import KEYDOWN, K_DOWN, K_ESCAPE, K_LEFT
+from pygame.locals import K_RIGHT, K_UP, QUIT
 
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
@@ -245,7 +238,8 @@ def main() -> None:
 
         # Инструкция по управлению
         instructions_text = 'Управление: стрелки, ESC - выход'
-        instructions = font.render(instructions_text, True, (200, 200, 200))
+        instructions = font.render(
+            instructions_text, True, (200, 200, 200))
         screen.blit(instructions, (10, SCREEN_HEIGHT - 40))
 
         pygame.display.update()
@@ -254,3 +248,4 @@ def main() -> None:
 
 if __name__ == '__main__':
     main()
+
