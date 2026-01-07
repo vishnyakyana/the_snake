@@ -2,15 +2,8 @@ import random
 from typing import Optional, Tuple
 
 import pygame
-from pygame.locals import (
-    K_UP, 
-    K_DOWN, 
-    K_LEFT, 
-    K_RIGHT, 
-    K_ESCAPE, 
-    KEYDOWN,
-    QUIT
-)
+from pygame.locals import KEYDOWN, K_DOWN, K_ESCAPE
+from pygame.locals import K_LEFT, K_RIGHT, K_UP, QUIT
 
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
@@ -18,17 +11,14 @@ GRID_SIZE = 20
 GRID_WIDTH = SCREEN_WIDTH // GRID_SIZE
 GRID_HEIGHT = SCREEN_HEIGHT // GRID_SIZE
 
-# Направления движения
 UP = (0, -1)
 DOWN = (0, 1)
 LEFT = (-1, 0)
 RIGHT = (1, 0)
 
-# Цвета
-BOARD_BACKGROUND_COLOR = (0, 0, 0)  # чёрный
-SNAKE_COLOR = (0, 255, 0)  # зелёный
-APPLE_COLOR = (255, 0, 0)  # красный
-
+BOARD_BACKGROUND_COLOR = (0, 0, 0) 
+SNAKE_COLOR = (0, 255, 0) 
+APPLE_COLOR = (255, 0, 0)  
 
 class GameObject:
     """Базовый класс для игровых объектов."""
@@ -50,7 +40,7 @@ class GameObject:
         self.position = position
 
         if body_color is None:
-            body_color = (255, 255, 255)  # Белый по умолчанию
+            body_color = (255, 255, 255) 
         self.body_color = body_color
 
     def draw(self, surface: pygame.Surface) -> None:
@@ -61,7 +51,6 @@ class GameObject:
             surface: Поверхность рисования.
         """
         pass
-
 
 class Apple(GameObject):
     """Класс яблока."""
@@ -84,7 +73,6 @@ class Apple(GameObject):
         )
         pygame.draw.rect(surface, self.body_color, rect)
         pygame.draw.rect(surface, (255, 255, 255), rect, 1)
-
 
 class Snake(GameObject):
     """Класс змеи."""
@@ -179,7 +167,6 @@ class Snake(GameObject):
                     (eye2_pos[0], eye2_pos[1], eye_size, eye_size)
                 )
 
-
 def handle_keys(snake: Snake) -> None:
     """Обработка ввода клавиатуры."""
     for event in pygame.event.get():
@@ -198,7 +185,6 @@ def handle_keys(snake: Snake) -> None:
             elif event.key == K_ESCAPE:
                 pygame.quit()
                 raise SystemExit
-
 
 def main() -> None:
     """Главная игра."""
@@ -228,7 +214,6 @@ def main() -> None:
 
         screen.fill(BOARD_BACKGROUND_COLOR)
 
-        # Рисуем сетку
         for x in range(0, SCREEN_WIDTH, GRID_SIZE):
             pygame.draw.line(screen, (40, 40, 40), (x, 0), (x, SCREEN_HEIGHT))
         for y in range(0, SCREEN_HEIGHT, GRID_SIZE):
@@ -237,13 +222,11 @@ def main() -> None:
         apple.draw(screen)
         snake.draw(screen)
 
-        # Показываем счёт игрока
         score_text = font.render(
             f'Длина: {snake.length}', True, (255, 255, 255)
         )
         screen.blit(score_text, (10, 10))
 
-        # Инструкция по управлению
         instructions_text = 'Управление: стрелки, ESC - выход'
         instructions = font.render(
             instructions_text, True, (200, 200, 200))
@@ -251,7 +234,6 @@ def main() -> None:
 
         pygame.display.update()
         clock.tick(10)
-
 
 if __name__ == '__main__':
     main()
