@@ -2,8 +2,16 @@ import random
 from typing import Optional, Tuple
 
 import pygame
-from pygame.locals import KEYDOWN, K_DOWN, K_ESCAPE
-from pygame.locals import K_LEFT, K_RIGHT, K_UP, QUIT
+from pygame.locals import (
+    KEYDOWN,
+    K_DOWN,
+    K_ESCAPE,
+    K_LEFT,
+    K_RIGHT,
+    K_UP,
+    QUIT,
+)
+
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
 GRID_SIZE = 20
@@ -230,7 +238,9 @@ def main() -> None:
         snake.draw(screen)
 
         # Показываем счёт игрока
-        score_text = font.render(f'Длина: {snake.length}', True, (255, 255, 255))
+        score_text = font.render(
+            f'Длина: {snake.length}', True, (255, 255, 255)
+        )
         screen.blit(score_text, (10, 10))
 
         # Инструкция по управлению
@@ -244,4 +254,3 @@ def main() -> None:
 
 if __name__ == '__main__':
     main()
-    
