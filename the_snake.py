@@ -2,8 +2,15 @@ import random
 from typing import Optional, Tuple
 
 import pygame
-from pygame.locals import (K_DOWN, K_ESCAPE, K_LEFT, K_RIGHT, K_UP, KEYDOWN,
-                           QUIT)
+from pygame.locals import (
+    K_UP, 
+    K_DOWN, 
+    K_LEFT, 
+    K_RIGHT, 
+    K_ESCAPE, 
+    KEYDOWN,
+    QUIT
+)
 
 SCREEN_WIDTH = 640
 SCREEN_HEIGHT = 480
@@ -248,4 +255,3 @@ def main() -> None:
 
 if __name__ == '__main__':
     main()
-
